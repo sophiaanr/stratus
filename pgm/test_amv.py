@@ -73,7 +73,8 @@ print("Reading forecast file")
 #fcst_data = amv.read_DecodedForecast_MSG(file_fcst)
 #file_fcst = '/home/snebuda/icomp/data/ECM_EI_AN_20160721_PL.grb'
 #file_fcst = '/data/rdworak/Intercomp/model/ECM_EI_AN_20160721_PL.grb'
-file_fcst = '/home/daves/intercomparison2021/ERA5/ERA5_UV_prs_20191020_hourly.grib'
+# file_fcst = '/home/daves/intercomparison2021/ERA5/ERA5_UV_prs_20191020_hourly.grib'
+file_fcst = '/Users/sreiner/Documents/stratus/datafiles/ERA5_UV_prs_20191020_hourly.grib'
 #datetime=2016072112
 datetime=2019102012
 #forecast data is 0-360 Longitude which works for H8 AMV data
@@ -134,7 +135,7 @@ amv_qc  = amv_data[5,:]
 #bfit_loc = [bfit_prs !=undef]
 bfit_loc = [(bfit_prs !=undef) & (bg_spd !=undef)]
 #bfit_loc = [(bfit_prs !=undef) & (bg_spd !=undef) & (amv_prs < 700.) & (amv_prs > 400.)]
-tmp  = bfit_prs[bfit_loc]
+tmp = bfit_prs[bfit_loc]
 bfit_num = tmp.shape[0]
 dp = bfit_prs[bfit_loc] - amv_prs[bfit_loc] 
 dp_x = amv_lon[bfit_loc]
