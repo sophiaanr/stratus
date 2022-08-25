@@ -1,0 +1,4 @@
+#module load shellb3/20120621-cspp 
+#module load shellb3/2014-q1
+module load miniconda/3.7-base
+

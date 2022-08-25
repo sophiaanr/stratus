@@ -1,0 +1,20 @@
+source ./README
+#./test_amv.py /data/rdworak/Intercomp/exp22/BRZCPTECfin_122_csv.csv    BRZexp22  'BRZ Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/BRZCPTECfin_122_csv.csv    BRZexp22  'BRZ Exp22' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/EUM322_csv.csv   EUMexp22  'EUM Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/EUM322_csv.csv   EUMexp22  'EUM Exp22' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/JMA422_csv.csv   JMAexp22  'JMA Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/JMA422_csv.csv   JMAexp22  'JMA Exp22' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/KMA522NI_csv.csv   KMAexp22  'KMA Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/KMA522NI_csv.csv   KMAexp22  'KMA Exp22' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/NOA622_csv.csv   NOAexp22  'NOA Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/NOA622_csv.csv   NOAexp22  'NOA Exp22' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/NWC722_csv.csv   NWCexp22  'NWC Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp22/NWC722_csv.csv   NWCexp22  'NWC Exp22' QINF 80 100
+
+#./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/BRZ/4th_AMVIC_INPE_Test_2b_final  BRZexp22  'BRZ Exp22' CQI 80 100
+./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/EUM/AMVIntm_Chan14_20191020120000Z_GOES_ASCII_Test22.txt EUMexp22  'EUM Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/JMA/JMA_test22_1200.txt   JMAexp22  'JMA Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/KMA/KMA_test22_goes16_abi_ch14_amv_201910201200.asc KMAexp22  'KMA Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/NOA/ASCII_AMV-4thInt_TEST2.GOES16.2019293.1200.CH_14.FD.CT NOAexp22  'NOA Exp22' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/NWC/INTERCOMP2021_NWCSAFTEST22.txt NWCexp22  'NWC Exp22' CQI 80 100

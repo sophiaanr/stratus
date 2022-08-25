@@ -1,0 +1,20 @@
+#source ./README
+#./test_amv.py /data/rdworak/Intercomp/exp21/BRZCPTECfin_121_csv.csv    BRZexp21  'BRZ Exp21' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/BRZCPTECfin_121_csv.csv    BRZexp21  'BRZ Exp21' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/EUM321_csv.csv   EUMexp21  'EUM Exp21' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/EUM321_csv.csv   EUMexp21  'EUM Exp21' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/JMA421_csv.csv   JMAexp21  'JMA Exp21' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/JMA421_csv.csv   JMAexp21  'JMA Exp21' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/KMA521NI_csv.csv   KMAexp21  'KMA Exp21' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/KMA521NI_csv.csv   KMAexp21  'KMA Exp21' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/NOA621_csv.csv   NOAexp21  'NOA Exp21' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/NOA621_csv.csv   NOAexp21  'NOA Exp21' QINF 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/NWC721_csv.csv   NWCexp21  'NWC Exp21' CQI 80 100
+#./test_amv.py /data/rdworak/Intercomp/exp21/NWC721_csv.csv   NWCexp21  'NWC Exp21' QINF 80 100
+
+./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/BRZ/4th_AMVIC_INPE_Test_2a_final BRZexp21  'BRZ Exp21' CQI 80 100
+./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/EUM/AMVIntm_Chan14_20191020113000Z_GOES_ASCII_Test21.txt EUMexp21  'EUM Exp21' CQI 80 100
+./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/JMA/JMA_test21_1130.txt JMAexp21  'JMA Exp21' CQI 80 100
+./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/KMA/KMA_test21_goes16_abi_ch14_amv_201910201130.asc KMAexp21  'KMA Exp21' CQI 80 100
+./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/NOA/ASCII_AMV-4thInt_TEST2.GOES16.2019293.1130.CH_14.FD.CT NOAexp21  'NOA Exp21' CQI 80 100
+./test_amv.py /data/rdworak/Intercomp/2021/input/Datasets2021/NWC/INTERCOMP2021_NWCSAFTEST21.txt NWCexp21  'NWC Exp21' CQI 80 100
