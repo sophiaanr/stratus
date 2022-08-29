@@ -133,7 +133,8 @@ amv_qc  = amv_data[5,:]
 # Compute change in pressure for AMV best fit (sometimes there are bestfit heights, but not original match of AMV to background
 # when the AMV height is higher than the lowest background pressure)
 #bfit_loc = [bfit_prs !=undef]
-bfit_loc = [(bfit_prs !=undef) & (bg_spd !=undef)]
+#bfit_loc = [(bfit_prs !=undef) & (bg_spd !=undef)]
+bfit_loc = np.logical_and(bfit_prs != undef, bg_spd != undef)
 #bfit_loc = [(bfit_prs !=undef) & (bg_spd !=undef) & (amv_prs < 700.) & (amv_prs > 400.)]
 tmp = bfit_prs[bfit_loc]
 bfit_num = tmp.shape[0]
@@ -469,7 +470,7 @@ plt.subplot(3,2,1)
 num_bins=50
 n,bins,patches = plt.hist(x,num_bins,facecolor='green',alpha=0.5)
 n,bins,patches = plt.hist(dp_x,num_bins,facecolor='orange',alpha=0.5)
-plt.xlim(60.,220.)
+plt.xlim(210.,360.)
 #plt.xlim(-60.,60.)
 #plt.ylim(0.,600.)
 plt.xlabel('Longitudes')
