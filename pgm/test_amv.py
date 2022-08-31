@@ -67,6 +67,25 @@ amv_data = amv.read_txt(file_amv,qc_pos,qc_min,qc_max,delimiter=delimiter,lonfli
 #lay_loc = [(amv_data[4,:] >=700.)]
 #print lay_loc
 
+print("filtering invalid lat and lon data")
+spd = []
+dir = []
+lat = []
+lon = []
+prs = []
+qc = []
+for i in range(amv_data.shape[1]):
+    dist_km = amv.great_circle(0, -75, amv_data[2, i], amv_data[3, i])
+    if dist_km <= 6670:
+        spd.append(amv_data[0, i])
+        dir.append(amv_data[1, i])
+        lat.append(amv_data[2, i])
+        lon.append(amv_data[3, i])
+        prs.append(amv_data[4, i])
+        qc.append(amv_data[5, i])
+
+amv_data = np.array([spd, dir, lat, lon, prs, qc])
+
 print("Reading forecast file")
 #file_fcst = '/home/daves/BestFit/DecodedForecast_20120917070613Z_20120917120000Z_12_O_MPFS03'
 #fcst_data = amv.read_DecodedForecast_MSG(file_fcst)
@@ -124,21 +143,9 @@ while (n < amv_num):
 
     n += 1
 
-print("Filtering lat and lon data")
+amv_prs = amv_data[4,:]
 amv_lat = amv_data[2,:]
 amv_lon = amv_data[3,:]
-
-lat = []
-lon = []
-for lt, ln in zip(amv_lat, amv_lon):
-    dist_km = amv.great_circle(0, -75, lt, ln)
-    if dist_km <= 6670:
-        lat.append(lt)
-        lon.append(ln)
-
-amv_prs = amv_data[4,:]
-amv_lat = np.array(lat)
-amv_lon = np.array(lon)
 amv_qc = amv_data[5,:]
 
 # Compute change in pressure for AMV best fit (sometimes there are bestfit heights, but not original match of AMV to background
