@@ -131,7 +131,7 @@ amv_lon = amv_data[3,:]
 lat = []
 lon = []
 for lt, ln in zip(amv_lat, amv_lon):
-    dist_km = amv.haversine_np(0, -75, lt, ln)
+    dist_km = amv.great_circle(0, -75, lt, ln)
     if dist_km <= 6670:
         lat.append(lt)
         lon.append(ln)
