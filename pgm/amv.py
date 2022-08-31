@@ -5,7 +5,9 @@ import os, os.path
 import sys
 import numpy as np
 import math
+from math import radians, sin, cos, acos
 import pygrib
+
 
 def read_txt(file,qc_pos,qc_min,qc_max,delimiter=None,lonflip=None,lon0=None):
 
@@ -754,4 +756,14 @@ def read_MSG_grib_uv(file,datetime=None):
 #       arrout[x,y,8,:] = latitude[j,:]
 #       arrout[x,y,9,:] = longitude[j,:]
 
+
+# https://medium.com/@petehouston/calculate-distance-of-two-locations-on-earth-using-python-1501b1944d97
+def great_circle(lat1, lon1, lat2, lon2):
+    """Calculate the great circle distance between two points
+    on the earth (specified in decimal degrees)"""
+
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    return 6371 * (
+        acos(sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lon1 - lon2))
+    )
 
