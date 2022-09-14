@@ -609,7 +609,7 @@ def read_MSG_grib(file,datetime=None):
     #print(grb[0])
     
     nlev = 37
-    ntim = 4
+    ntim = 24
     
     dt_file = np.zeros(ntim,dtype=int)
     for n in range(ntim):
@@ -702,7 +702,7 @@ def read_MSG_grib_uv(file,datetime=None):
     #print(grb[0])
     
     nlev = 37
-    ntim = 4
+    ntim = 24
     
     dt_file = np.zeros(ntim,dtype=int)
     for n in range(ntim):
