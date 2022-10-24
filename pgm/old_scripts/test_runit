@@ -1,0 +1,27 @@
+#!/bin/bash
+
+###### Exp 1 ######
+./test_amv.py /data/sreiner/datafiles/BRZ/4th_AMVIC_INPE_Test_1_final   BRZexp1  'BRZ Exp1' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/EUM/AMVIntm_Chan14_20191020120000Z_GOES_ASCII_Test11.txt   EUMexp1  'EUM Exp1' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/JMA/JMA_test11_1200.txt   JMAexp1  'JMA Exp1' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/KMA/KMA_test11_goes16_abi_ch14_amv_201910201200.asc   KMAexp1  'KMA Exp1' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/NOA/ASCII_AMV-4thInt_TEST1.GOES16.2019293.1200.CH_14.FD.CT   NOAexp1  'NOA Exp1' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/NWC/INTERCOMP2021_NWCSAFTEST11.txt   NWCexp1  'NWC Exp1' CQI 80 100
+
+###### Exp 21 ######
+./test_amv.py /data/sreiner/datafiles/BRZ/4th_AMVIC_INPE_Test_2a_final BRZexp21  'BRZ Exp21' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/EUM/AMVIntm_Chan14_20191020113000Z_GOES_ASCII_Test21.txt EUMexp21  'EUM Exp21' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/JMA/JMA_test21_1130.txt JMAexp21  'JMA Exp21' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/KMA/KMA_test21_goes16_abi_ch14_amv_201910201130.asc KMAexp21  'KMA Exp21' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/NOA/ASCII_AMV-4thInt_TEST2.GOES16.2019293.1130.CH_14.FD.CT NOAexp21  'NOA Exp21' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/NWC/INTERCOMP2021_NWCSAFTEST21.txt NWCexp21  'NWC Exp21' CQI 80 100
+
+
+###### Exp 22 ######
+./test_amv.py /data/sreiner/datafiles/BRZ/4th_AMVIC_INPE_Test_2b_final  BRZexp22  'BRZ Exp22' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/EUM/AMVIntm_Chan14_20191020120000Z_GOES_ASCII_Test22.txt EUMexp22  'EUM Exp22' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/JMA/JMA_test22_1200.txt   JMAexp22  'JMA Exp22' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/KMA/KMA_test22_goes16_abi_ch14_amv_201910201200.asc KMAexp22  'KMA Exp22' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/NOA/ASCII_AMV-4thInt_TEST2.GOES16.2019293.1200.CH_14.FD.CT NOAexp22  'NOA Exp22' CQI 80 100
+./test_amv.py /data/sreiner/datafiles/NWC/INTERCOMP2021_NWCSAFTEST22.txt NWCexp22  'NWC Exp22' CQI 80 100
+

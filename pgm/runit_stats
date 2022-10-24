@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Exp 1
+./stat_ttest.py /home/daves/intercomparison2021/BRZ/4th_AMVIC_INPE_Test_1_final.txt BRZexp1
+./stat_ttest.py /home/daves/intercomparison2021/EUM/AMVIntm_Chan14_20191020120000Z_GOES_ASCII_Test11.txt EUMexp1
+./stat_ttest.py /home/daves/intercomparison2021/JMA/JMA_test11_1200.txt JMAexp1
+./stat_ttest.py /home/daves/intercomparison2021/KMA/KMA_test11_goes16_abi_ch14_amv_201910201200.asc KMAexp1
+./stat_ttest.py /home/daves/intercomparison2021/NOAA/ASCII_AMV-4thInt_TEST1.GOES16.2019293.1200.CH_14.FD.CT NOAexp1
+./stat_ttest.py /home/daves/intercomparison2021/NWC/INTERCOMP2021_NWCSAFTEST11.txt NWCexp1

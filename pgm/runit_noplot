@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# USAGE: ./runit_noplot {PRS_RANGE}
+# ./runit_noplot L (low range)
+# ./runit_noplot   (default to all range)
+
+# LOW (L) PRS: 700 to 1020 
+# MID (M) PRS: 401 to 699 
+# HIGH (H) PRS: 10 to 400  
+# DEFAULT (A) PRS: 10 to 1020
+
+if [ "$1" == "L" ]; then
+    PRS_MIN=700
+    PRS_MAX=1020
+elif [ "$1" == "M" ]; then
+    PRS_MIN=401
+    PRS_MAX=699
+elif [ "$1" == "H" ]; then
+    PRS_MIN=10
+    PRS_MAX=400
+else
+    PRS_MIN=10
+    PRS_MAX=1020
+fi
+
+QC_MIN=80
+QC_MAX=100
+PRS_RANGE=$1
+main_script=test_noplot.py
+
+################ EXP 1 ################
+BRZ_FILE=/home/daves/intercomparison2021/BRZ/4th_AMVIC_INPE_Test_1_final.txt
+EUM_FILE=/home/daves/intercomparison2021/EUM/AMVIntm_Chan14_20191020120000Z_GOES_ASCII_Test11.txt
+JMA_FILE=/home/daves/intercomparison2021/JMA/JMA_test11_1200.txt
+KMA_FILE=/home/daves/intercomparison2021/KMA/KMA_test11_goes16_abi_ch14_amv_201910201200.asc
+NOA_FILE=/home/daves/intercomparison2021/NOAA/ASCII_AMV-4thInt_TEST1.GOES16.2019293.1200.CH_14.FD.CT
+NWC_FILE=/home/daves/intercomparison2021/NWC/INTERCOMP2021_NWCSAFTEST11.txt
+
+exp_num=1
+QC_TYPE=CQI
+stats_file=amv_vd_stats_exp${exp_num}.${QC_TYPE}_${QC_MIN}-${QC_MAX}_${PRS_RANGE}.txt
+
+#### EXP 1 CQI 80-100 ####
+./${main_script} ${BRZ_FILE} BRZexp${exp_num} 'BRZ Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${EUM_FILE} EUMexp${exp_num} 'EUM Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${JMA_FILE} JMAexp${exp_num} 'JMA Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${KMA_FILE} KMAexp${exp_num} 'KMA Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${NOA_FILE} NOAexp${exp_num} 'NOA Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${NWC_FILE} NWCexp${exp_num} 'NWC Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+
+QC_TYPE=QINF
+stats_file=amv_vd_stats_exp${exp_num}.${QC_TYPE}_${QC_MIN}-${QC_MAX}_${PRS_RANGE}.txt
+
+#### EXP 1 QINF 80-100 ####
+./${main_script} ${BRZ_FILE} BRZexp${exp_num} 'BRZ Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${EUM_FILE} EUMexp${exp_num} 'EUM Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${JMA_FILE} JMAexp${exp_num} 'JMA Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${KMA_FILE} KMAexp${exp_num} 'KMA Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${NOA_FILE} NOAexp${exp_num} 'NOA Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${NWC_FILE} NWCexp${exp_num} 'NWC Exp1' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+
+
+################ EXP 22 ################
+BRZ_FILE=/home/daves/intercomparison2021/BRZ/4th_AMVIC_INPE_Test_2b_final.txt
+EUM_FILE=/home/daves/intercomparison2021/EUM/AMVIntm_Chan14_20191020120000Z_GOES_ASCII_Test22.txt
+JMA_FILE=/home/daves/intercomparison2021/JMA/JMA_test22_1200.txt
+KMA_FILE=/home/daves/intercomparison2021/KMA/KMA_test22_goes16_abi_ch14_amv_201910201200.asc
+NOA_FILE=/home/daves/intercomparison2021/NOAA/ASCII_AMV-4thInt_TEST2.GOES16.2019293.1200.CH_14.FD.CT
+NWC_FILE=/home/daves/intercomparison2021/NWC/INTERCOMP2021_NWCSAFTEST22.txt
+
+exp_num=22
+QC_TYPE=CQI
+stats_file=amv_vd_stats_exp${exp_num}.${QC_TYPE}_${QC_MIN}-${QC_MAX}_${PRS_RANGE}.txt
+
+#### EXP 22 CQI 80-100 ####
+./${main_script} ${BRZ_FILE} BRZexp${exp_num} 'BRZ Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${EUM_FILE} EUMexp${exp_num} 'EUM Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${JMA_FILE} JMAexp${exp_num} 'JMA Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${KMA_FILE} KMAexp${exp_num} 'KMA Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${NOA_FILE} NOAexp${exp_num} 'NOA Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${NWC_FILE} NWCexp${exp_num} 'NWC Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+
+QC_TYPE=QINF
+stats_file=amv_vd_stats_exp${exp_num}.${QC_TYPE}_${QC_MIN}-${QC_MAX}_${PRS_RANGE}.txt
+
+#### EXP 1 QINF 80-100 ####
+./${main_script} ${BRZ_FILE} BRZexp${exp_num} 'BRZ Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${EUM_FILE} EUMexp${exp_num} 'EUM Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${JMA_FILE} JMAexp${exp_num} 'JMA Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${KMA_FILE} KMAexp${exp_num} 'KMA Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${NOA_FILE} NOAexp${exp_num} 'NOA Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
+./${main_script} ${NWC_FILE} NWCexp${exp_num} 'NWC Exp22' ${QC_TYPE} ${QC_MIN} ${QC_MAX} ${PRS_MIN} ${PRS_MAX} ${stats_file}
