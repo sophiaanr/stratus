@@ -9,7 +9,7 @@ from math import radians, sin, cos, acos
 import pygrib
 
 
-def read_txt(file,qc_pos,qc_min,qc_max,delimiter=None,lonflip=None,lon0=None):
+def read_txt(file,qc_pos,qc_min,qc_max,delimiter=None,lonflip=None,lon0=None, vprs=[10, 1020]):
 
 #lonflip not equal to None will flip the sign on longitude
 #lon0 two options, 0= -180 to 180 lon
@@ -24,7 +24,7 @@ def read_txt(file,qc_pos,qc_min,qc_max,delimiter=None,lonflip=None,lon0=None):
     with open(file,'r') as f:
         for line in f:
             try:
-                amv_list=parse_amv(line,qc_pos,qc_min,qc_max,delimiter=delimiter)
+                amv_list=parse_amv(line,qc_pos,qc_min,qc_max,delimiter=delimiter,vpressure=vprs)
                 if (amv_list[0] != undef): 
                     amv_num +=1
             except:
@@ -67,7 +67,7 @@ def read_txt(file,qc_pos,qc_min,qc_max,delimiter=None,lonflip=None,lon0=None):
 
 
 
-def parse_amv(line,qc_pos,qc_min,qc_max,lonflip=None,lon0=None,delimiter=None):
+def parse_amv(line,qc_pos,qc_min,qc_max,lonflip=None,lon0=None,delimiter=None,vpressure=[10, 1020]):
 
 # contain format of text file and data checking in one function
 
@@ -83,7 +83,7 @@ def parse_amv(line,qc_pos,qc_min,qc_max,lonflip=None,lon0=None,delimiter=None):
     tlon = 2 ; vlon=[-180.,360.]
     tspd = 5 ; vspd=[0.,150.]
     tdir = 6 ; vdir=[0.,361.]
-    tprs = 7 ; vprs=[10.,1020.]
+    tprs = 7 ; vprs=vpressure
     tqc  = qc_pos ; vqc =[qc_min,qc_max]
 
     if delimiter==None:

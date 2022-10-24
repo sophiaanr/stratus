@@ -14,6 +14,7 @@ from pylab import *
 undef = -9999.
 
 # ./test_noplot.py /home/daves/intercomparison2021/BRZ/4th_AMVIC_INPE_Test_2b_final.txt  BRZexp22  'BRZ Exp22' CQI 60 69
+# ./test_noplot.py /home/daves/intercomparison2021/BRZ/4th_AMVIC_INPE_Test_1_final.txt BRZexp22 'BRZ Exp1' CQI 80 100 10 400 
 
 # Pick up parameters
 file_amv=sys.argv[1]
@@ -23,6 +24,11 @@ qc_min=int(sys.argv[5])
 print("QI min {0}".format(qc_min))
 qc_max=int(sys.argv[6])
 print("QI max {0}".format(qc_max))
+prs_min=int(sys.argv[7])
+print(f"PRS min {prs_min}")
+prs_max=int(sys.argv[8])
+print(f"PRS max {prs_max}")
+prs_range=[prs_min, prs_max]
 
 if qc_type == 'QINF' :
    qc_pos=16  # 0 is first position
@@ -39,8 +45,11 @@ if qc_type == 'CQI' :
    qc_str='CQI:'+str(qc_min) + '-' + str(qc_max)
    qc_txt='.cqi_'+str(qc_min) + '-' + str(qc_max)
 
-fig_title=sys.argv[3] + qc_str
 
+if len(sys.argv) >= 10:
+    stats_file = sys.argv[9]
+else:
+    stats_file = 'stats_'+source+qc_txt+'.txt'
 
 #files
 omb_u_fig='omb_u.'+source+qc_txt+'.png'
@@ -53,25 +62,13 @@ bfit_fig='bfit_location.'+source+qc_txt+'.png'
 
 
 print("Reading amv data file: "  + file_amv)
-#delimiter=';'
 delimiter=','
 #amv data is mcidas west positive -180 to 180, data is flipped and rotated to 0-360 longitude
-#amv_data = amv.read_txt(file_amv,qc_pos,qc_min,qc_max,delimiter=delimiter,lonflip=True,lon0=180.,shift=-1)
-#amv_data = amv.read_txt(file_amv,qc_pos,qc_min,qc_max,delimiter=delimiter,lonflip=True,lon0=180.)
-amv_data = amv.read_txt(file_amv,qc_pos,qc_min,qc_max,delimiter=delimiter,lonflip=None,lon0=180.)
-#lay_loc = [(amv_data[4,:] >=700.)]
-#print lay_loc
+amv_data = amv.read_txt(file_amv,qc_pos,qc_min,qc_max,delimiter=delimiter,lonflip=None,lon0=180., vprs=prs_range)
 
 print("Reading forecast file")
-#file_fcst = '/home/daves/BestFit/DecodedForecast_20120917070613Z_20120917120000Z_12_O_MPFS03'
-#fcst_data = amv.read_DecodedForecast_MSG(file_fcst)
-#file_fcst = '/home/snebuda/icomp/data/ECM_EI_AN_20160721_PL.grb'
-#file_fcst = '/data/rdworak/Intercomp/model/ECM_EI_AN_20160721_PL.grb'
-# file_fcst = '/home/daves/intercomparison2021/ERA5/ERA5_UV_prs_20191020_hourly.grib'
-#file_fcst = '/Users/sreiner/Documents/stratus/datafiles/ERA5_UV_prs_20191020_hourly.grib'
 file_fcst = '/data/sreiner/datafiles/ERA5_UV_prs_20191020_hourly.grib'
 #file_fcst = '/data/rdworak/Intercomp/model/ECM_EI_AN_20160721_PL.grb'
-#datetime=2016072112
 datetime=2019102012
 #forecast data is 0-360 Longitude which works for H8 AMV data
 #no handling of lon mismatch in amv.locate
@@ -182,8 +179,7 @@ std_vd_new = np.std(vd_omb_new)
 rms_vd_new = np.sqrt( mean_vd_new**2 + std_vd_new**2 )
 
 #Write out stats to a file
-#fo = open("amv_vd_stats.txt","a")
-fo = open('stats_'+source+qc_txt+'.txt',"a")
+fo = open(stats_file,"a")
 statsvd = "{0} {1} Total Number, Best Fit Number, VD OMB Mean,RMSE and VD OMB after fit Mean, RMSE: {2} {3} {4:.2f} {5:.2f} {6:.2f} {7:.2f}\n" \
 .format(file_amv,qc_str,amv_num,bfit_num,mean_vd_bg,rms_vd_bg,mean_vd_new,rms_vd_new)
 fo.write( statsvd);
