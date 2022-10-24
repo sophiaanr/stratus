@@ -22,12 +22,17 @@ undef = -9999.
 file_amv=sys.argv[1]
 source=sys.argv[2]
 qc_type=sys.argv[4]
-#qc_min=int(sys.argv[5])
-qc_min=80
+qc_min=int(sys.argv[5])
+#qc_min=80
 #print qc_min
-#qc_max=int(sys.argv[6])
-qc_max=100
+qc_max=int(sys.argv[6])
+#qc_max=100
 #print qc_max
+
+if len(sys.argv) >= 8:
+    stats_file=sys.argv[7]
+else:
+    stats_file = "amv_vd_stats.txt"
 
 if qc_type == 'QINF' :
    qc_pos=16  # 0 is first position
@@ -67,24 +72,23 @@ amv_data = amv.read_txt(file_amv,qc_pos,qc_min,qc_max,delimiter=delimiter,lonfli
 #lay_loc = [(amv_data[4,:] >=700.)]
 #print lay_loc
 
-print("filtering invalid lat and lon data")
-spd = []
-dir = []
-lat = []
-lon = []
-prs = []
-qc = []
-for i in range(amv_data.shape[1]):
-    dist_km = amv.great_circle(0, -75, amv_data[2, i], amv_data[3, i])
-    if dist_km <= 6670:
-        spd.append(amv_data[0, i])
-        dir.append(amv_data[1, i])
-        lat.append(amv_data[2, i])
-        lon.append(amv_data[3, i])
-        prs.append(amv_data[4, i])
-        qc.append(amv_data[5, i])
-
-amv_data = np.array([spd, dir, lat, lon, prs, qc])
+#print("filtering invalid lat and lon data")
+#spd = []
+#dir = []
+#lat = []
+#lon = []
+#prs = []
+#qc = []
+#for i in range(amv_data.shape[1]):
+#    dist_km = amv.great_circle(0, -75, amv_data[2, i], amv_data[3, i])
+#    if dist_km <= 6670:
+#        spd.append(amv_data[0, i])
+#        dir.append(amv_data[1, i])
+#        lat.append(amv_data[2, i])
+#        lon.append(amv_data[3, i])
+#        prs.append(amv_data[4, i])
+#        qc.append(amv_data[5, i])
+#amv_data = np.array([spd, dir, lat, lon, prs, qc])
 
 print("Reading forecast file")
 #file_fcst = '/home/daves/BestFit/DecodedForecast_20120917070613Z_20120917120000Z_12_O_MPFS03'
@@ -92,7 +96,8 @@ print("Reading forecast file")
 #file_fcst = '/home/snebuda/icomp/data/ECM_EI_AN_20160721_PL.grb'
 #file_fcst = '/data/rdworak/Intercomp/model/ECM_EI_AN_20160721_PL.grb'
 # file_fcst = '/home/daves/intercomparison2021/ERA5/ERA5_UV_prs_20191020_hourly.grib'
-file_fcst = '/Users/sreiner/Documents/stratus/datafiles/ERA5_UV_prs_20191020_hourly.grib'
+#file_fcst = '/Users/sreiner/Documents/stratus/datafiles/ERA5_UV_prs_20191020_hourly.grib'
+file_fcst = '/data/sreiner/datafiles/ERA5_UV_prs_20191020_hourly.grib'
 #datetime=2016072112
 datetime=2019102012
 #forecast data is 0-360 Longitude which works for H8 AMV data
@@ -204,7 +209,7 @@ std_vd_new = np.std(vd_omb_new)
 rms_vd_new = np.sqrt( mean_vd_new**2 + std_vd_new**2 )
 
 #Write out stats to a file
-fo = open("amv_vd_stats.txt","a")
+fo = open(stats_file,"a")
 statsvd = "{0} {1} Total Number, Best Fit Number, VD OMB Mean,RMSE and VD OMB after fit Mean, RMSE: {2} {3} {4:.2f} {5:.2f} {6:.2f} {7:.2f}\n" \
 .format(file_amv,qc_str,amv_num,bfit_num,mean_vd_bg,rms_vd_bg,mean_vd_new,rms_vd_new)
 fo.write( statsvd);
