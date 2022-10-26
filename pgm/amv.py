@@ -47,7 +47,7 @@ def read_txt(file,qc_pos,qc_min,qc_max,delimiter=None,lonflip=None,lon0=None, vp
     with open(file,'r') as f:
         for line in f:
             try:
-                amv_list=parse_amv(line,qc_pos,qc_min,qc_max,lonflip=lonflip,lon0=lon0,delimiter=delimiter)
+                amv_list=parse_amv(line,qc_pos,qc_min,qc_max,lonflip=lonflip,lon0=lon0,delimiter=delimiter,vpressure=vprs)
                 if (amv_list[0] != undef): 
                     amv_spd[count] = amv_list[0]
                     amv_dir[count] = amv_list[1]
