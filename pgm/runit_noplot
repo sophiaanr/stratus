@@ -4,23 +4,23 @@
 # ./runit_noplot L (low range)
 # ./runit_noplot   (default to all range)
 
-# LOW (L) PRS: 700 to 1020 
+# LOW (L) PRS: 700 to 1000 
 # MID (M) PRS: 401 to 699 
-# HIGH (H) PRS: 10 to 400  
-# DEFAULT (A) PRS: 10 to 1020
+# HIGH (H) PRS: 100 to 400  
+# DEFAULT (A) PRS: 100 to 1000
 
 if [ "$1" == "L" ]; then
     PRS_MIN=700
-    PRS_MAX=1020
+    PRS_MAX=1000
 elif [ "$1" == "M" ]; then
     PRS_MIN=401
     PRS_MAX=699
 elif [ "$1" == "H" ]; then
-    PRS_MIN=10
+    PRS_MIN=100
     PRS_MAX=400
 else
-    PRS_MIN=10
-    PRS_MAX=1020
+    PRS_MIN=100
+    PRS_MAX=1000
 fi
 
 QC_MIN=80
